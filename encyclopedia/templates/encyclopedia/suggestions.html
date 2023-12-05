@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{ entry_name }}
+{% endblock %}
+
+{% block body %}
+<h1>Did you mean...</h1>
+
+<ul>
+    {% for suggestion in suggestions %}
+        <li><a href="/wiki/{{ suggestion }}"> {{ suggestion }} </a></li>
+    {% empty %}
+    Sorry, No Entries to Suggest.
+    {% endfor %}
+</ul>
+
+{% endblock %}
