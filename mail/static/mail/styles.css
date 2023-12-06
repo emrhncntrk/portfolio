@@ -1,0 +1,45 @@
+textarea {
+    min-height: 400px;
+}
+#email-display{
+    border-style: solid;
+    border-color: rgb(126, 126, 126);
+    border-radius: 10px;
+    padding: 10px 10px;
+}
+#email-display button{
+    border-style: solid;
+    border-color: rgb(126, 126, 126);
+    border-radius: 5px;
+    padding: 5px 5px;
+    margin: 5px 5px;
+}
+#email-display button:hover{
+    background-color: rgb(0, 140, 255);
+    color: white;
+}
+.mailinfo{
+    border-radius: 10px;
+    background-color: rgba(0, 255, 255, 0.25);
+    padding: 20px 20px;
+    max-width: fit-content;
+}
+.mailbody{
+    border-radius: 10px;
+    background-color: rgba(251, 255, 0, 0.25);
+    padding: 10px 10px;
+    margin-bottom: 10px;
+}
+#emails-view div{
+    border-style: solid;
+    border-color: rgb(85, 85, 85);
+    border-radius: 5px;
+    padding: 5px 5px;
+    margin-bottom: 10px;
+}
+#emails-view div:hover{ 
+    border-color: rgb(34, 34, 34);
+    border-radius: 5px;
+    padding: 10px 10px;
+    cursor: pointer;
+}
