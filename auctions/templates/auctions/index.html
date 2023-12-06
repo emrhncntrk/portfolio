@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+
+    {%for listing in listings%}
+    {%if listing.active%}
+    <div class="listing">
+        <h3><a href="/{{listing.id}}">{{listing.title}}</a></h3>
+        {%if listing.image%}
+        <img src="{{listing.image}}" alt="Image for this listing." height="300">
+        {%endif%}
+        <h5> {{listing.description}} </h5>
+        <h6>Price: {{listing.min_bid}} </h6>
+        
+    </div>
+    {%endif%}
+    {%empty%}
+    <div><p>No Active Listings Yet.</p></div>
+ 
+    {%endfor%}
+
+{% endblock %}
