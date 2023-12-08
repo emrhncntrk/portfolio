@@ -1,0 +1,60 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<!-- new post creation window-->
+<div id="new-post-div">
+    <h2>New Post</h2>
+    <form action="{%url 'makePost'%}" method="post">
+        {% csrf_token %}
+        <textarea name="content" id="new-post" cols="80" rows="10"></textarea>
+        <br>
+        <input type="submit" value="Post">
+    </form>
+</div>
+
+
+
+
+    <div>
+        <h2>Fallowing</h2>
+         <!-- Posts loop -->
+        {% for post in page_obj %}
+        <div class="single-post">
+            <a href="{% url 'profile' username=post.user %}"><strong>{{post.user}}</strong></a>
+            <h4>{{post.content}}</h4>
+
+            <h8>{{post.date}} <strong> Likes: </strong></h8><h8 id="likes-{{post.id}}">{{post.like_count}}</h8>
+            <!-- Like -->
+            {% if user.is_authenticated %}
+                {% if post.id in likeList %}    
+                    <button class="likebtn" name="{{post.id}}" id="likebtn-{{post.id}}">Un-Like</button>
+                {% else %}
+                    <button class="likebtn" name="{{post.id}}" id="likebtn-{{post.id}}">Like</button>
+                {% endif %}
+            {% endif %} 
+        </div>
+        
+
+        {% endfor %}
+        <!-- Pagination -->
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+
+
+{% endblock %}
