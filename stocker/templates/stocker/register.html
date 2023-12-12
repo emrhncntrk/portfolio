@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Sen">
+    <link rel="stylesheet" type="text/css" href="{% static 'stocker/styles.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Register</title>
+</head>
+<!-- Register form -->
+<body class="form-body">
+    <div class="form-group">
+        <!-- X symbol for returning to index page -->
+        <button id="closeBtn" class="close-button"><a class="closelink" href="{%url 'index'%}">&#x2715</a></button>
+        <h1 class="title">Register to Stocker</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" class="form-control" name="username" placeholder="Username" autocomplete="off" required>
+            <input type="text" class="form-control" name="email" placeholder="Email" autocomplete="email" required>
+            <input type="password" class="form-control" name="password1" placeholder="New Password" autocomplete="new-password" required>
+            <input type="password" class="form-control" name="password2" placeholder="Confirm Password" autocomplete="off" required>
+            <!-- Displaying errors -->
+            {% if messages %}
+            <div class="text-danger">
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <small>Already have an account? <a href="{%url 'login'%}">Login here.</a></small>
+            <br /><br />
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+</body>
+
+</html>

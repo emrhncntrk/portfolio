@@ -1,0 +1,186 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'stocker/styles.css' %}">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Sen">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <meta charset="UTF-8">
+    <title>Stocker</title>
+
+</head>
+
+<body>
+    <script src="{% static 'stocker/script.js' %}"></script>
+
+    <header>
+        <h1 id="pageTitle">Stocker</h1>
+        <!-- Collapsable navigation bar -->
+        <div class="navbar navbar-expand-lg navbar-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item" id="nasdaqButton">Nasdaq</li>
+                    <li class="nav-item" id="currenciesButton">Currencies</li>
+                    <li class="nav-item" id="futuresButton">Futures</li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item" id="portfolioButton">Portfolio</li>
+                    <li class="nav-item"><a class="non-link" href="{%url 'logout' %}">Logout</a></li>
+                    <li class="nav-item user">Welcome {{ user }}!</li>
+                    {% else %}
+                    <li class="nav-item"><a class="non-link" href="{%url 'login' %}">Login</a></li>
+                    <li class="nav-item"><a class="non-link" href="{%url 'register' %}">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </header>
+    
+    <!-- To easily check if user is logged in JavaScript -->
+    {% if user.is_authenticated %}
+    <div id="authentication">yes</div>
+    {% else %}
+    <div id="authentication">no</div>
+    {% endif %}
+
+    <!-- Search bar -->
+    <form id="searchform" action="" class="container mt-3">
+        <div class="input-group">
+            <input type="text" id="searchfield" name="symbol_name" class="form-control" placeholder="Search a stock with its symbol" required>
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+        <div id="searchError" class="text-danger"></div>
+    </form>
+
+    <!-- Loading Animation -->
+    <div id="load-view" class="container mt-4">
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th class="loadingRow"></th>
+                        <th class="loadingRow"></th>
+                        <th class="loadingRow"></th>
+                    </tr>
+                    <tr>
+                        <th class="loadingRow two"></th>
+                        <th class="loadingRow two"></th>
+                        <th class="loadingRow two"></th>
+                    </tr>
+                    <tr>
+                        <th class="loadingRow three"></th>
+                        <th class="loadingRow three"></th>
+                        <th class="loadingRow three"></th>
+                    </tr>
+                    <tr>
+                        <th class="loadingRow four"></th>
+                        <th class="loadingRow four"></th>
+                        <th class="loadingRow four"></th>
+                    </tr>
+                    <tr>
+                        <th class="loadingRow five"></th>
+                        <th class="loadingRow five"></th>
+                        <th class="loadingRow five"></th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- List of stocks -->
+    <div id="stocks-list" class="container mt-4">
+        <table id="data-table" class="table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Stocks -->
+            </tbody>
+        </table>
+    </div>
+    <!-- Portfolio list -->
+    <div id="portfolio-list" class="container mt-4">
+        <table id="portfolio-table" class="table">
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Stocks -->
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Detailed view with graph -->
+    <div id="stock-detail-view" class="container mt-4">
+        <div class="row">
+            <div class="col-md-9 p-0">
+                <div id="stock-graph" class="graph">
+                    <!-- Graph -->
+                </div>
+                <div id="periods" class="mt-3">
+                    <!-- Buttons for different periods -->
+                    <button class="btn btn-secondary periodButton" value="1d">1 day</button>
+                    <button class="btn btn-secondary periodButton" value="1mo">1 month</button>
+                    <button class="btn btn-secondary periodButton" value="3mo">3 months</button>
+                    <button class="btn btn-secondary periodButton" value="1y">1 year</button>
+                    <button class="btn btn-secondary periodButton" value="5y">5 years</button>
+                </div>
+                <div id="arbitrage" class="mt-3">
+                    <form id="arbitrageform" action="">
+                        <div class="input-group">
+                            <input type="text" id="arbitragefield" class="form-control" placeholder="Compare with another stock." required>
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-primary arbitrage">Arbitrage</button>
+                            </div>
+                        </div>
+                        <div id="arbSearchError" class="text-danger"></div>
+                    </form>
+                    <div id="success" class="text-success"></div>
+            <div id="add-button">
+                {{ csrf_token }}
+                <!-- Add button -->
+            </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div id="stock-info" class="card">
+                    <!-- Stock details -->
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

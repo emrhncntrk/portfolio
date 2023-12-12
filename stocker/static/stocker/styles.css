@@ -1,0 +1,354 @@
+@charset "UTF-8";
+
+@keyframes loading {
+    0% {
+        background-color: #ffffff;
+    }
+    50% {
+        background-color: #333;
+    }
+    100% {
+        background-color: #ffffff;
+    }
+}
+
+@keyframes hoverrow {
+    0% {
+        background-color: inherit;
+    }
+
+    100% {
+        background-color: #b1b1b18c;
+        padding: 16px 10px;
+        font-size: 1.1rem;
+    }
+
+}
+
+* {
+    font-family: 'Sen', sans-serif;
+    text-shadow: 1px 1px 8px #999999;
+}
+
+.loadingRow {
+    background-color:#ffffff;
+    height: 50px;
+    animation: loading;
+    animation-timing-function: ease-in;
+    animation-duration: 2000ms;
+    animation-iteration-count: infinite;
+}
+
+.loadingRow.two {
+    animation-delay: 500ms;
+}
+.loadingRow.three {
+    animation-delay: 1000ms;
+}
+.loadingRow.four {
+    opacity: 0.5;
+    animation-delay: 1500ms;
+}
+.loadingRow.five {
+    opacity: 0.2;
+    animation-delay: 2000ms;
+}
+
+#authentication {
+    display: none;
+}
+
+.form-body {
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #3c3f42;
+    
+}
+
+.form-group {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 2px 3px 8px #757575;
+}
+
+.form-control {
+    margin-top: 20px;
+}
+
+.close-button {
+    float: right;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    
+}
+.closelink {
+    color: #afafaf; 
+}
+.closelink:hover{
+    color: #c4c4c4;
+    text-decoration: none;
+    
+}
+
+
+#pageTitle {
+    font-size: 4rem;
+    text-shadow: 2px 2px 8px #757575;
+    text-align: center;
+    cursor: pointer;
+}
+
+body, html {
+    background: rgb(170,170,170);
+    background: linear-gradient(90deg, rgba(170,170,170,1) 0%, rgba(255,255,255,1) 15%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 85%, rgba(170,170,170,1) 100%);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+h1 {
+    margin: 0;
+}
+
+.navbar{
+    background: rgb(85,85,85);
+    background: radial-gradient(circle, rgba(65,65,65,0.8) 0%, rgba(58,58,58,0.8) 40%, rgba(51,51,51,0.8) 85%);
+}
+.navbar-nav{
+    text-align: center;
+}
+.nav-item{
+    text-align: left;
+    font-size: 1.2rem;
+    margin-right: 2.5rem;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+.nav-item:hover{
+    color: #777;
+}
+.user{
+    cursor: default;
+}
+.user:hover{
+    color: white;
+}
+.non-link{
+    color: white;
+}
+.non-link:hover{
+    color: #777;
+    text-decoration: none;
+}
+
+#searchform {
+    text-align: center;
+    margin: 25px auto;
+}
+
+#searchfield {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#searchform button {
+    margin-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 1rem;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#searchform button:hover {
+    background-color: #555;
+}
+#periods .periodButton{
+    font-size: .9rem;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    background-color: #333;
+}
+#periods .periodButton:hover{
+    background-color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+.price {
+    font-weight: bold;
+}
+
+.up {
+    color: #4CAF50;
+}
+
+.down {
+    color: #f44336;
+}
+
+.unch {
+    color: #808080;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+td {
+    cursor: pointer;
+}
+
+tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, 0.4)
+}
+
+tr:nth-child(even) {
+    background-color: rgba(236, 236, 236, 0.5)
+}
+
+table tr:hover td{
+    animation: hoverrow;
+    animation-timing-function: ease-in;
+    animation-duration: 200ms;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+#portfolio-list, #stock-detail-view {
+    display: none;
+}
+.arbitrage{
+    margin-top: 20px;
+}
+
+.detail-list {
+    border-collapse: collapse;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.detail-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px; 
+    font-size: 16px;
+    border-bottom: 1px solid #ccc;
+}
+.card{
+    box-shadow: 2px 3px 8px #757575;
+}
+
+.subject {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+#arbitrageSymbol {
+    display: none;
+}
+
+#symbolDetail {
+    text-align: center;
+}
+
+.detail-list li:nth-child(even){
+    background-color: rgb(236, 236, 236, 0.5);
+}
+
+.graph {
+    min-height: 400px;
+    min-width: 900px;
+}
+.plotly {
+    background: transparent;
+}
+
+#stock-detail-view {
+    display: none;
+    width: 90%;
+    margin: auto;
+}
+
+.col-md-9 {
+    padding-right: 15px;
+}
+
+.col-md-3 {
+    padding-left: 15px;
+}
+
+.graph {
+    min-height: 400px;
+    min-width: 100%;
+}
+
+#periods {
+    text-align: center;
+}
+
+#arbitrage {
+    margin-top: 20px;
+}
+
+#stock-info {
+    margin-top: 20px;
+}
+#addButton{
+    margin-top: 10px;
+    background-color: #333;
+    font-size: .9rem;
+    border-style: none;
+}
+#addButton:hover{
+    background-color: #555;   
+}
+
+
+
+@media screen and (max-width: 600px) {
+    .navbar li {
+        float: none;
+        font-size: 14px;
+    }
+
+    #searchfield {
+        width: 60%;
+    }
+    #periods .periodButton{
+        font-size: 8px;
+        margin-right: 2px;
+    }
+    .graph{
+        min-height: 200px;
+    }
+}
