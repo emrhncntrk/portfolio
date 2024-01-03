@@ -1,4 +1,4 @@
-# Project Overview
+# Wiki Site Project
 
 ## Description
 This project involves creating a website with functionality similar to Wikipedia for the CS50 Web Programming Course by Harvard. Users can search for, create, and edit encyclopedia entries using Markdown language.
