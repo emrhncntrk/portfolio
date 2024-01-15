@@ -1,3 +1,6 @@
+##Use it yourself
+https://emirhanc.pythonanywhere.com/
+
 ## Overview
 
 Stocker is a single page web application to get live information for stocks in the American stock market as well as currencies and futures. The app gives us Nasdaq compenents to access the most common stocks and a list of most popular currencies and futures by default. In this list we can see the symbol, description of the symbol and the price for each item for some quick information. We can also get information about any stock, currency or future by entering its symbol in the search bar. 
